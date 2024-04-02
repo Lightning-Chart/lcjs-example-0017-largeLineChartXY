@@ -18,7 +18,7 @@ const dataPerTrend = 500 * 1000
 // Create chart and series.
 const chart = lightningChart()
     .ChartXY({
-        theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined
+        theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined,
     })
     .setTitle(`Line Chart with large data set (${((trendsCount * dataPerTrend) / 10 ** 6).toFixed(1)} million data points)`)
 

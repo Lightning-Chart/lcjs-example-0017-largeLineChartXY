@@ -2,13 +2,13 @@
  * LightningChartJS example that showcases visualization of large XY line chart.
  */
 // Import LightningChartJS
-const lcjs = require('@arction/lcjs')
+const lcjs = require('@lightningchart/lcjs')
 
 // Import xydata
-const xydata = require('@arction/xydata')
+const xydata = require('@lightningchart/xydata')
 
 // Extract required parts from LightningChartJS.
-const { lightningChart, emptyFill, Themes } = lcjs
+const { lightningChart, emptyFill, emptyLine, Themes } = lcjs
 
 const { createProgressiveTraceGenerator } = xydata
 
@@ -23,6 +23,7 @@ const chart = lightningChart({
         theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined,
     })
     .setTitle(`Line Chart with large data set (${((trendsCount * dataPerTrend) / 10 ** 6).toFixed(1)} million data points)`)
+    .setCursor((cursor) => cursor.setTickMarkerYVisible(false).setGridStrokeYStyle(emptyLine))
 
 Promise.all(
     new Array(trendsCount).fill(0).map((_) => createProgressiveTraceGenerator().setNumberOfPoints(dataPerTrend).generate().toPromise()),

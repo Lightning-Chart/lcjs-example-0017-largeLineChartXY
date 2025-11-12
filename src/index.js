@@ -35,5 +35,6 @@ createMultiChannelTraceGenerator()
                 .addLineSeries()
                 .setStrokeStyle((stroke) => stroke.setThickness(1))
                 .setDataSet(dataSet, { x: 'x', y: `y${i}` })
+                .setName(`Series ${i + 1}`)
         }
     })

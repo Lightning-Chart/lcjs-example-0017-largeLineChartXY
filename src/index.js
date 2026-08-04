@@ -9,7 +9,7 @@ const lcjs = require('@lightningchart/lcjs')
 const xydata = require('@lightningchart/xydata')
 
 // Extract required parts from LightningChartJS.
-const { lightningChart, emptyFill, emptyLine, DataSetXY, Themes } = lcjs
+const { lightningChart, emptyFill, emptyLine, DataSet, Themes } = lcjs
 const { createMultiChannelTraceGenerator } = xydata
 
 const trendsCount = 10
@@ -34,7 +34,7 @@ createMultiChannelTraceGenerator()
     .setNumberOfPoints(dataPerTrend)
     .generate()
     .then((allData) => {
-        const dataSet = new DataSetXY().appendSamples(allData)
+        const dataSet = new DataSet().appendSamples(allData)
         for (let i = 0; i < trendsCount; i += 1) {
             chart
                 .addLineSeries()
